@@ -1,16 +1,20 @@
 package com.dennis;
 
 import com.dennis.model.Account;
+import com.dennis.model.Bank;
 
 public class Main {
     static void main() {
 
-        Account account = new Account(1L,30000);
+        Bank bank = new Bank();
 
-        account.withdraw(30001);
-//        account.deposit();
+        Account account = bank.getAccount();
+
+        account.deposit(50000);
+        account.withdraw(100);
 
         IO.println(account);
+
 
 
 
