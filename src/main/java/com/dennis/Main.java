@@ -7,7 +7,12 @@ public class Main {
 
         Account account = new Account(1L,30000);
 
+        account.withdraw(30001);
+//        account.deposit();
+
         IO.println(account);
+
+
 
     }
 }
