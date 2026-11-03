@@ -39,6 +39,9 @@ public class Account {
         }
     }
 
+    public double checkBalance() {
+        return this.balance;
+    }
 
     @Override
     public String toString() {
@@ -48,6 +51,3 @@ public class Account {
 
 
 
-//public double checkBalance() {
-//
-//}
