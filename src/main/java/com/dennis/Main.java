@@ -6,9 +6,11 @@ import com.dennis.model.Bank;
 import java.util.Scanner;
 
 public class Main {
+
+    static Scanner scanner = new Scanner(System.in);
+
     static void main() {
 
-        Scanner scanner = new Scanner(System.in);
         Bank bank = new Bank();
 
         Account account = bank.getAccount();
@@ -16,26 +18,45 @@ public class Main {
         account.deposit(50000);
         account.withdraw(100);
 
-//        IO.println(account);
+        IO.println(account);
 
-        IO.println("[1]: check balance");
-        IO.println("[2]: deposit");
-        IO.println("[3]: withdraw");
-        IO.println("[10]: exit");
+        while (true) {
 
-        int choice = scanner.nextInt();
+            IO.println("[1]: check balance");
+            IO.println("[2]: deposit");
+            IO.println("[3]: withdraw");
+            IO.println("[10]: exit");
 
-        switch (choice) {
+            int choice = scanner.nextInt();
 
-            case 1 -> checkBalance(account);
+            switch (choice) {
+
+                case 1 -> checkBalance(account);
+
+                case 2 -> depositMenu(account);
+
+                case 3 -> withdrawMenu(account);
+
+                case 10 -> {return;
+                }
+            }
+        }
+    }
+
+    public static void checkBalance (Account account){
+        IO.println("Balance: " + account.checkBalance());
         }
 
-
-
+    public static void depositMenu (Account account){
+        IO.println("Enter the amount of money you want to deposit!");
+        double depositAmount = scanner.nextDouble();
+        account.deposit(depositAmount);
     }
 
-    public static void checkBalance(Account account) {
-       IO.println("Balance: " + account.checkBalance());
+    public static void withdrawMenu (Account account) {
+        IO.println("Enter the amount of money you want to withdraw!");
+        double withdrawAmount = scanner.nextDouble();
+        account.withdraw(withdrawAmount);
     }
-
 }
+
