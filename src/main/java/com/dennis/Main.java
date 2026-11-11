@@ -51,6 +51,7 @@ public class Main {
         IO.println("Enter the amount of money you want to deposit!");
         double depositAmount = scanner.nextDouble();
         account.deposit(depositAmount);
+
     }
 
     public static void withdrawMenu (Account account) {

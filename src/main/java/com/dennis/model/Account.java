@@ -1,5 +1,8 @@
 package com.dennis.model;
 
+import com.dennis.exception.InsufficientFundsException;
+import com.dennis.exception.InvalidAmountException;
+
 public class Account {
     private Long id;
     private double balance;
@@ -26,17 +29,23 @@ public class Account {
     }
 
     public void deposit(double amount) {
+        if (amount <= 0) {
+           throw new InvalidAmountException("You can not deposit a negative amount of money!");
+        }
         this.balance += amount;
     }
 
     public void withdraw(double amount) {
-        if (amount <= this.balance) {
-            this.balance -= amount;
+        if (amount <= 0) {
+            throw new InvalidAmountException("You can not withdraw a negative amount of money!");
         }
 
-        else {
-            IO.println("You don´t have enough money!");
+        if (amount > this.balance) {
+            throw new InsufficientFundsException("You can not withdraw more money than you have!");
         }
+
+        this.balance -= amount;
+
     }
 
     public double checkBalance() {
